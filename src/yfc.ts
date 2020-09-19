@@ -1,7 +1,8 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
+import * as dfs from './dfs';
 
-export async function get_all_claims( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
+export async function liquidity( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // params
     const code = "yfcfishponds";
     const scope = "yfcfishponds";
@@ -13,10 +14,13 @@ export async function get_all_claims( rpc: JsonRpc, owner: string, authorization
     // results
     const actions = [];
     for ( const row of result.rows ) {
-        // must supply must be less than max supply
-        const supply = Number(row.supply.split(" ")[0]);
-        const max_supply = Number(row.max_supply.split(" ")[0]);
-        if ( supply >= max_supply ) continue;
+        // end epoch time must not exceed current time
+        const now = Math.round(new Date().getTime() / 1000);
+        const end = Math.round(new Date(row.end + "Z").getTime() / 1000);
+        if ( now >= end ) continue;
+
+        // must have DFS liquidity
+        if ( !await dfs.is_liquidity( rpc, row.id, owner ) ) continue;
 
         // claim action
         actions.push({
@@ -33,27 +37,5 @@ export async function get_all_claims( rpc: JsonRpc, owner: string, authorization
 }
 
 export async function get_available_claims( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
-    const claims: Action[] = [];
-    for ( const action of await get_all_claims( rpc, owner, authorization )) {
-        // params
-        const code = "defisswapcnt";
-        const scope = action.data.id;
-        const table = "liquidity"
-        const lower_bound = owner;
-        const upper_bound = owner;
-
-        // query
-        const result = await rpc.get_table_rows({json: true, code, scope, table, lower_bound, upper_bound });
-
-        // empty table
-        if (!result.rows.length) continue;
-
-        // must have greater than 0 token
-        const token = result.rows[0].token;
-        if ( !token ) continue;
-
-        // approved claim
-        claims.push( action );
-    }
-    return claims;
+    return [...await liquidity( rpc, owner, authorization )];
 }
