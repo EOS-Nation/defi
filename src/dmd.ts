@@ -1,7 +1,7 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 
-export function get_all_claims( owner: string, authorization: Authorization[] ): Action[] {
+export async function get_all_claims( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     return ["eosdmdpool15", "eosdmdpool1a", "eosdmdpool1b"].map( account => {
         return {
             account,
@@ -16,7 +16,7 @@ export function get_all_claims( owner: string, authorization: Authorization[] ):
 
 export async function get_available_claims( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     const claims: Action[] = [];
-    for ( const action of get_all_claims( owner, authorization )) {
+    for ( const action of await get_all_claims( rpc, owner, authorization )) {
         // params
         const code = action.account;
         const scope = action.account;
