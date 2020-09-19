@@ -1,6 +1,6 @@
-# `**DeFi Claim**`
+# `DeFi`
 
-> DeFi claiming for EOS Mainnet
+> DeFi for EOS Mainnet
 
 ## Install
 
@@ -21,6 +21,7 @@ const authorization = [{actor: owner, permission: "active"}];
 
 // all claim actions
 const actions = defi[chain][dapp].get_all_claims( owner, authorization );
+console.log(actions);
 ```
 
 **Requires HTTP requests**
@@ -40,7 +41,6 @@ const authorization = [{actor: owner, permission: "active"}];
 (async () => {
     // available claim actions
     const actions = await defi[chain][dapp].get_available_claims( rpc, owner, authorization );
-
     console.log( actions );
 })()
 ```
