@@ -2,7 +2,7 @@ import * as defi from "..";
 
 // params
 const chain = "eos";
-const dapp = "dmd";
+const dapp = "defibox";
 const owner = "myaccount";
 const authorization = [{actor: owner, permission: "active"}];
 

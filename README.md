@@ -8,6 +8,9 @@
 $ npm install git+ssh://git@github.com:EOS-Nation/DeFi.git
 ```
 
+1. `get_all_claims` returns you all the actions (no validation)
+2. `get_available_claims` returns you all claimable actions based on `owner` (requires HTTP requests)
+
 ## Quick Start
 
 ```ts
@@ -15,7 +18,7 @@ import * as defi from "defi";
 
 // params
 const chain = "eos";
-const dapp = "dmd";
+const dapp = "defibox";
 const owner = "myaccount";
 const authorization = [{actor: owner, permission: "active"}];
 
@@ -34,7 +37,7 @@ const rpc = new JsonRpc("https://eos.eosn.io", { fetch: require('node-fetch') })
 
 // params
 const chain = "eos";
-const dapp = "dmd";
+const dapp = "defibox";
 const owner = "myaccount";
 const authorization = [{actor: owner, permission: "active"}];
 
