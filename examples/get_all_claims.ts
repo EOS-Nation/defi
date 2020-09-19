@@ -1,4 +1,4 @@
-import * as defi from "../dist";
+import * as defi from "..";
 
 // params
 const chain = "eos";

@@ -1,5 +1,5 @@
 import { JsonRpc } from 'eosjs';
-import * as defi from "../dist";
+import * as defi from "..";
 
 const rpc = new JsonRpc("https://eos.eosn.io", { fetch: require('node-fetch') });
 
