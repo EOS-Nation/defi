@@ -29,6 +29,8 @@ export async function get_available_claims( rpc: JsonRpc, owner: string, authori
 
         // empty table
         if (!result.rows.length) continue;
+
+        // approved claim
         claims.push( action );
     }
     return claims;

@@ -29,8 +29,12 @@ export async function get_available_claims( rpc: JsonRpc, owner: string, authori
 
         // empty table
         if (!result.rows.length) continue;
+
+        // must have greater than 0 BOX
         const amount = Number(result.rows[0].quantity.split(" ")[0]);
         if ( !amount ) continue;
+
+        // approved claim
         claims.push( action );
     }
     return claims;
