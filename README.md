@@ -7,8 +7,19 @@
 ```bash
 $ npm install git+ssh://git@github.com:EOS-Nation/DeFi.git
 ```
-1. `get_all_claims` returns you all the actions (no validation)
-2. `get_available_claims` returns you all claimable actions based on `owner` (validation)
+
+## DeFI dApps
+
+- `coral`
+- `defibox`
+- `dfs`
+- `dmd`
+- `wool`
+- `yfc`
+
+## Actions
+
+1. `get_all_claims` returns you all the claimable actions
 
 ## Quick Start
 
