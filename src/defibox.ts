@@ -1,26 +1,63 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 
-export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
-    const actions: Action[] = [];
-    for ( const contract of ["mine1.defi", "mine3.defi"] ) {
-        // user must have dividends
-        if ( !await is_dividends( rpc, owner, contract, authorization)) continue;
+export async function generation( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
+    const contract = "mine3.defi";
 
-        // claim action
-        actions.push({
-            account: contract,
-            name: "claim",
-            authorization,
-            data: {
-                from: owner,
-            }
-        })
-    }
-    return actions;
+    // user must have dividends
+    if ( !await is_dividends( rpc, owner, contract ) ) return [];
+
+    // claim action
+    return [{
+        account: contract,
+        name: "claim",
+        authorization,
+        data: {
+            owner,
+        }
+    }]
 }
 
-export async function is_dividends( rpc: JsonRpc, owner: string, contract: string, authorization: Authorization[] ): Promise<Boolean> {
+export async function lptoken( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
+    const contract = "lptoken.defi";
+
+    // user must have dividends
+    if ( !await is_rewards( rpc, owner, contract )) return [];
+
+    // claim action
+    return [{
+        account: contract,
+        name: "claim",
+        authorization,
+        data: {
+            owner,
+        }
+    }]
+}
+
+export async function is_rewards( rpc: JsonRpc, owner: string, contract: string ): Promise<Boolean> {
+    // params
+    const code = contract;
+    const scope = contract;
+    const table = "rewards"
+    const lower_bound = owner;
+    const upper_bound = owner;
+
+    // query
+    const result = await rpc.get_table_rows({json: true, code, scope, table, lower_bound, upper_bound });
+
+    // empty table
+    if (!result.rows.length) return false;
+
+    // must have greater than 0 unclaimed
+    const unclaimed = Number(result.rows[0].unclaimed);
+    if ( !unclaimed ) return false;
+
+    // account has dividends
+    return true
+}
+
+export async function is_dividends( rpc: JsonRpc, owner: string, contract: string ): Promise<Boolean> {
     // params
     const code = contract;
     const scope = contract;
@@ -43,5 +80,5 @@ export async function is_dividends( rpc: JsonRpc, owner: string, contract: strin
 }
 
 export async function get_available_claims( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
-    return [...await rewards( rpc, owner, authorization )];
+    return [...await generation( rpc, owner, authorization ), ...await lptoken( rpc, owner, authorization )];
 }
