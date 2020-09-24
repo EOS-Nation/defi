@@ -25,7 +25,7 @@ export async function liquidity( rpc: JsonRpc, owner: string, authorization: Aut
         // claim action
         actions.push({
             account: "yfcfishponds",
-            name: "claim",
+            name: "fishing",
             authorization,
             data: {
                 id: row.id,
