@@ -1,14 +1,14 @@
-# `DeFi`
+# `defi`
 
-> DeFi for EOS Mainnet
+> DeFi utility for EOS Mainnet
 
 ## Install
 
 ```bash
-$ npm install git+ssh://git@github.com:EOS-Nation/DeFi.git
+$ npm install git+ssh://git@github.com:EOS-Nation/defi.git
 ```
 
-## DeFI dApps
+## DAPPS
 
 - `coral`
 - `defibox`
