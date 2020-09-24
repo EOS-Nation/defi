@@ -4,6 +4,7 @@ import * as yfc from "./src/yfc";
 import * as dfs from "./src/dfs";
 import * as wool from "./src/wool";
 import * as coral from "./src/coral";
+import * as superdad from "./src/superdad";
 
 export const eos = {
     "dmd": dmd,
@@ -12,4 +13,5 @@ export const eos = {
     "dfs": dfs,
     "wool": wool,
     "coral": coral,
+    "superdad": superdad,
 }
