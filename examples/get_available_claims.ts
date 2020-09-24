@@ -6,8 +6,8 @@ const rpc = new JsonRpc("https://eos.eosn.io", { fetch: require('node-fetch') })
 
 // params
 const chain = "eos";
-const dapp = "superdad";
-const owner = "23.games";
+const dapp = "dolphin";
+const owner = "11.bank";
 const authorization = [{actor: owner, permission: "active"}];
 
 (async () => {

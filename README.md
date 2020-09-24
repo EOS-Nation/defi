@@ -16,6 +16,8 @@ $ npm install git+ssh://git@github.com:EOS-Nation/defi.git
 - `dmd`
 - `wool`
 - `yfc`
+- `superdad`
+- `dolphin`
 
 ## Actions
 
