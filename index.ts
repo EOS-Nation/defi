@@ -6,6 +6,7 @@ import * as wool from "./src/wool";
 import * as coral from "./src/coral";
 import * as superdad from "./src/superdad";
 import * as dolphin from "./src/dolphin";
+import * as rabbit from "./src/rabbit";
 
 export const eos = {
     "dmd": dmd,
@@ -16,4 +17,5 @@ export const eos = {
     "coral": coral,
     "superdad": superdad,
     "dolphin": dolphin,
+    "rabbit": rabbit,
 }

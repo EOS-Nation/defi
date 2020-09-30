@@ -10,14 +10,17 @@ $ npm install git+ssh://git@github.com:EOS-Nation/defi.git
 
 ## DAPPS
 
-- `coral`
-- `defibox`
-- `dfs`
-- `dmd`
-- `wool`
-- `yfc`
-- `superdad`
-- `dolphin`
+| **id**        | **symcodes**  |
+|---------------|---------------|
+| `coral`       |   CRL         |
+| `defibox`     |   BOX         |
+| `dfs`         |   DFS         |
+| `dmd`         |   DMD         |
+| `wool`        |   WOOL        |
+| `yfc`         |   YFC         |
+| `superdad`    |   DAD         |
+| `dolphin`     |   DOP         |
+| `rabbit`      |   RAB/CRT     |
 
 ## Actions
 
