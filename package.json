@@ -3,11 +3,10 @@
   "name": "defi",
   "version": "0.0.1",
   "description": "EOSIO DeFi",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.js",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
     "prepare": "tsc"
