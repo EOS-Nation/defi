@@ -9,13 +9,13 @@ import * as wool from "./src/wool";
 import * as yfc from "./src/yfc";
 
 export const eos = {
-    "coral": coral,
-    "defibox": defibox,
-    "dfs": dfs,
-    "dmd": dmd,
-    "dolphin": dolphin,
-    "rabbit": rabbit,
-    "superdad": superdad,
-    "wool": wool,
-    "yfc": yfc,
+    coral,
+    defibox,
+    dfs,
+    dmd,
+    dolphin,
+    rabbit,
+    superdad,
+    wool,
+    yfc,
 }

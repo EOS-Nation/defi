@@ -1,6 +1,9 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import { is_unclaimed, get_pools } from "./wool";
+import { RAB, CRT, Token } from "./tokens";
+
+export const tokens: Token[] = [ RAB, CRT ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // results

@@ -1,5 +1,8 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
+import { DFS, Token } from "./tokens";
+
+export const tokens: Token[] = [ DFS ];
 
 export async function liquidity( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // params

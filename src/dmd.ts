@@ -1,5 +1,8 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
+import { DMD, Token } from "./tokens";
+
+export const tokens: Token[] = [ DMD ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     const actions: Action[] = [];

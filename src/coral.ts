@@ -1,6 +1,9 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import * as wool from "./wool";
+import { CRL, Token } from "./tokens";
+
+export const tokens: Token[] = [ CRL ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // results

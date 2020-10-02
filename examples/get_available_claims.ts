@@ -15,4 +15,5 @@ const authorization = [{actor: owner, permission: "active"}];
     const actions = await defi[chain][dapp].get_available_claims( rpc, owner, authorization );
 
     console.log( actions );
+    console.log( defi[chain][dapp].tokens );
 })()
