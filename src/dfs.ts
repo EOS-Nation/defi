@@ -33,26 +33,26 @@ export const tokens: Token[] = [ DFS ];
 //     return actions;
 // }
 
-// export async function is_liquidity( rpc: JsonRpc, mid: number, owner: string ): Promise<Boolean> {
-//     // params
-//     const code = "defisswapcnt";
-//     const scope = mid;
-//     const table = "liquidity"
-//     const lower_bound = owner;
-//     const upper_bound = owner;
+export async function is_liquidity( rpc: JsonRpc, mid: number, owner: string ): Promise<Boolean> {
+    // params
+    const code = "defisswapcnt";
+    const scope = mid;
+    const table = "liquidity"
+    const lower_bound = owner;
+    const upper_bound = owner;
 
-//     // query
-//     const result = await rpc.get_table_rows({json: true, code, scope, table, lower_bound, upper_bound });
+    // query
+    const result = await rpc.get_table_rows({json: true, code, scope, table, lower_bound, upper_bound });
 
-//     // empty table
-//     if (!result.rows.length) return false;
+    // empty table
+    if (!result.rows.length) return false;
 
-//     // must have greater than 0 token
-//     if ( !result.rows[0].token ) return false;
+    // must have greater than 0 token
+    if ( !result.rows[0].token ) return false;
 
-//     // account has liquidity
-//     return true;
-// }
+    // account has liquidity
+    return true;
+}
 
 export async function get_available_claims( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     return [];
