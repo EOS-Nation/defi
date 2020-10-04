@@ -7,7 +7,7 @@ export const tokens: Token[] = [ DMD ];
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     const actions: Action[] = [];
 
-    for ( const contract of ["eosdmdpool15", "eosdmdpool1a", "eosdmdpool1b"]) {
+    for ( const contract of ["eosdmdpool15", "eosdmdpool1a", "eosdmdpool1b", "eosdmdpool1c", "eosdmdpool1d"]) {
         if (!await is_unclaimed( rpc, owner, contract )) continue;
 
         // approved claim
