@@ -1,5 +1,4 @@
 export interface Token {
-    dapp: string;
     symcode: string;
     precision: number;
     contract: string;
@@ -8,7 +7,6 @@ export interface Token {
 }
 
 export const CRL: Token = {
-    dapp: "coral",
     symcode: "CRL",
     contract: "coralfitoken",
     precision: 10,
@@ -16,7 +14,6 @@ export const CRL: Token = {
 }
 
 export const BOX: Token = {
-    dapp: "defibox",
     symcode: "BOX",
     contract: "token.defi",
     precision: 6,
@@ -24,7 +21,6 @@ export const BOX: Token = {
 }
 
 export const DFS: Token = {
-    dapp: "dfs",
     symcode: "DFS",
     contract: "minedfstoken",
     precision: 4,
@@ -32,7 +28,6 @@ export const DFS: Token = {
 }
 
 export const DMD: Token = {
-    dapp: "dapp",
     symcode: "DMD",
     contract: "eosdmdtokens",
     precision: 10,
@@ -40,7 +35,6 @@ export const DMD: Token = {
 }
 
 export const DOP: Token = {
-    dapp: "dolphin",
     symcode: "DOP",
     contract: "dolphintoken",
     precision: 8,
@@ -48,7 +42,6 @@ export const DOP: Token = {
 }
 
 export const RAB: Token = {
-    dapp: "rabbit",
     symcode: "RAB",
     contract: "rabbitstoken",
     precision: 4,
@@ -57,7 +50,6 @@ export const RAB: Token = {
 }
 
 export const CRT: Token = {
-    dapp: "rabbit",
     symcode: "CRT",
     contract: "carrotstoken",
     precision: 4,
@@ -66,7 +58,6 @@ export const CRT: Token = {
 }
 
 export const DAD: Token = {
-    dapp: "superdad",
     symcode: "DAD",
     contract: "dadtoken1111",
     precision: 6,
@@ -74,7 +65,6 @@ export const DAD: Token = {
 }
 
 export const WOOL: Token = {
-    dapp: "wool",
     symcode: "WOOL",
     contract: "woolfintoken",
     precision: 4,
@@ -82,7 +72,6 @@ export const WOOL: Token = {
 }
 
 export const YFC: Token = {
-    dapp: "yfc",
     symcode: "YFC",
     contract: "woolfintoken",
     precision: 8,
