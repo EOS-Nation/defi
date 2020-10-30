@@ -6,6 +6,20 @@ export interface Token {
     dfs_mid?: number;
 }
 
+export const COW: Token = {
+    symcode: "COW",
+    contract: "cowtokencode",
+    precision: 4,
+    defibox_pair_id: 753,
+}
+
+export const MILK: Token = {
+    symcode: "MILK",
+    contract: "milktokencde",
+    precision: 4,
+    defibox_pair_id: 776,
+}
+
 export const CRL: Token = {
     symcode: "CRL",
     contract: "coralfitoken",

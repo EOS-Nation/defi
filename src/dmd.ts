@@ -2,12 +2,13 @@ import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import { DMD, Token } from "./tokens";
 
+export const contracts = ["eosdmdpool15", "eosdmdpool1a", "eosdmdpool1b", "eosdmdpool1c", "eosdmdpool1d"];
 export const tokens: Token[] = [ DMD ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     const actions: Action[] = [];
 
-    for ( const contract of ["eosdmdpool15", "eosdmdpool1a", "eosdmdpool1b", "eosdmdpool1c", "eosdmdpool1d"]) {
+    for ( const contract of contracts) {
         if (!await is_unclaimed( rpc, owner, contract )) continue;
 
         // approved claim

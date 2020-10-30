@@ -2,17 +2,17 @@ import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import { BOX, Token } from "./tokens";
 
+export const contracts = ["mine3.defi"];
 export const tokens: Token[] = [ BOX ];
 
 export async function generation( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
-    const contract = "mine3.defi";
 
     // user must have dividends
-    if ( !await is_dividends( rpc, owner, contract ) ) return [];
+    if ( !await is_dividends( rpc, owner, contracts[0] ) ) return [];
 
     // claim action
     return [{
-        account: contract,
+        account: contracts[0],
         name: "claim",
         authorization,
         data: {

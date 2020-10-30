@@ -1,22 +1,21 @@
 import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
-import * as wool from "./wool";
+import { get_pools, is_unclaimed } from "./wool";
 import { CRL, Token } from "./tokens";
 
+export const contracts = ["eoscoralpool"];
 export const tokens: Token[] = [ CRL ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // results
     const actions = [];
-
-    const contract = "eoscoralpool"
-    for ( const pool_id of await wool.get_pools( rpc, contract ) ) {
+    for ( const pool_id of await get_pools( rpc, contracts[0] ) ) {
         // must have unclaimed rewards
-        if ( !await wool.is_unclaimed( rpc, owner, contract, pool_id ) ) continue;
+        if ( !await is_unclaimed( rpc, owner, contracts[0], pool_id, "miners" ) ) continue;
 
         // claim action
         actions.push({
-            account: contract,
+            account: contracts[0],
             name: "claim",
             authorization,
             data: {

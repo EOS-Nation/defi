@@ -1,4 +1,5 @@
 import * as coral from "./src/coral";
+import * as cow from "./src/cow";
 import * as defibox from "./src/defibox";
 import * as dmd from "./src/dmd";
 // import * as dfs from "./src/dfs";
@@ -10,6 +11,7 @@ import * as yfc from "./src/yfc";
 import * as tokens from "./src/tokens";
 
 export const eos = {
+    cow,
     coral,
     defibox,
     // dfs,

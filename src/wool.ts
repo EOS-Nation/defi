@@ -2,16 +2,17 @@ import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import { WOOL, Token } from "./tokens";
 
+export const contracts = ["woolfilppool", "woolfinfarms"];
 export const tokens: Token[] = [ WOOL ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // results
     const actions = [];
 
-    for ( const contract of ["woolfilppool", "woolfinfarms"]) {
+    for ( const contract of contracts) {
         for ( const pool_id of await get_pools( rpc, contract ) ) {
             // must have unclaimed rewards
-            if ( !await is_unclaimed( rpc, owner, contract, pool_id ) ) continue;
+            if ( !await is_unclaimed( rpc, owner, contract, pool_id, "miners" ) ) continue;
 
             // claim action
             actions.push({
@@ -39,11 +40,10 @@ export async function get_pools( rpc: JsonRpc, contract: string ): Promise<numbe
     return result.rows.map((row: any) => row.id);
 }
 
-export async function is_unclaimed( rpc: JsonRpc, owner: string, contract: string, pool_id: number ): Promise<Boolean> {
+export async function is_unclaimed( rpc: JsonRpc, owner: string, contract: string, pool_id: number, table: string ): Promise<Boolean> {
     // params
     const code = contract;
     const scope = pool_id;
-    const table = "miners"
     const lower_bound = owner;
     const upper_bound = owner;
 

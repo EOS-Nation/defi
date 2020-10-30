@@ -3,11 +3,12 @@ import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import * as dfs from './dfs';
 import { YFC, Token } from "./tokens";
 
+export const contracts = ["yfcfishponds"];
 export const tokens: Token[] = [ YFC ];
 
 export async function liquidity( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // params
-    const code = "yfcfishponds";
+    const code = contracts[0];
     const scope = "yfcfishponds";
     const table = "ponds"
 
@@ -27,7 +28,7 @@ export async function liquidity( rpc: JsonRpc, owner: string, authorization: Aut
 
         // claim action
         actions.push({
-            account: "yfcfishponds",
+            account: contracts[0],
             name: "fishing",
             authorization,
             data: {

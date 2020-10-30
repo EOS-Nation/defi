@@ -2,17 +2,17 @@ import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import { DAD, Token } from "./tokens";
 
+export const contracts = ["dadtokenissu"];
 export const tokens: Token[] = [ DAD ];
 
 export async function liquidity( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
-    const contract = "dadtokenissu";
 
     // user must have dividends
-    if ( !await is_claim( rpc, owner, contract ) ) return [];
+    if ( !await is_claim( rpc, owner, contracts[0] ) ) return [];
 
     // claim action
     return [{
-        account: contract,
+        account: contracts[0],
         name: "claim",
         authorization,
         data: {

@@ -2,20 +2,20 @@ import { JsonRpc } from 'eosjs';
 import { Action, Authorization } from 'eosjs/dist/eosjs-serialize';
 import { DOP, Token } from "./tokens";
 
+export const contracts = ["dolphinpools"];
 export const tokens: Token[] = [ DOP ];
 
 export async function rewards( rpc: JsonRpc, owner: string, authorization: Authorization[] ): Promise<Action[]> {
     // results
     const actions = [];
-    const contract = "dolphinpools";
 
-    for ( const pool_id of await get_pools( rpc, contract ) ) {
+    for ( const pool_id of await get_pools( rpc, contracts[0] ) ) {
         // must have unclaimed rewards
-        if ( !await is_unclaimed( rpc, owner, contract, pool_id ) ) continue;
+        if ( !await is_unclaimed( rpc, owner, contracts[0], pool_id ) ) continue;
 
         // claim action
         actions.push({
-            account: contract,
+            account: contracts[0],
             name: "claim",
             authorization,
             data: {
