@@ -6,6 +6,13 @@ export interface Token {
     dfs_mid?: number;
 }
 
+export const TAG: Token = {
+    symcode: "TAG",
+    contract: "tagtokenmain",
+    precision: 8,
+    defibox_pair_id: 602,
+}
+
 export const COW: Token = {
     symcode: "COW",
     contract: "cowtokencode",
